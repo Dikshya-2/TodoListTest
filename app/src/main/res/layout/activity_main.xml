@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F5F5F5"
+    android:padding="16dp"
+    tools:context=".MainActivity">
+
+    <!-- Header Section -->
+    <LinearLayout
+        android:id="@+id/header_section"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <!-- App Logo/Title -->
+        <TextView
+            android:id="@+id/app_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Task Master"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <!-- XP Bar -->
+        <ProgressBar
+            android:id="@+id/xp_bar"
+            style="@android:style/Widget.DeviceDefault.ProgressBar.Horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="3" />
+
+        <!-- Streak Bonus -->
+        <TextView
+            android:id="@+id/streak_bonus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Streak: 5"
+            android:textSize="14sp" />
+
+        <!-- Profile Icon -->
+        <ImageView
+            android:id="@+id/profile_icon"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="end"
+            android:src="@drawable/baseline_person_pin_24" /> <!-- Ensure this is properly set -->
+
+    </LinearLayout>
+
+    <!-- Main Screen -->
+    <LinearLayout
+        android:id="@+id/main_screen"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/header_section"
+        android:layout_marginTop="16dp"
+        android:orientation="horizontal">
+
+        <!-- Left Side: Task Creation Form -->
+        <ScrollView
+            android:id="@+id/task_creation_form"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:padding="8dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <!-- Task Name -->
+                <EditText
+                    android:id="@+id/task_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Task Name" />
+
+                <!-- Description -->
+                <EditText
+                    android:id="@+id/task_description"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="top"
+                    android:hint="Description"
+                    android:inputType="textMultiLine"
+                    android:minLines="3" />
+
+                <!-- Repeatable -->
+                <CheckBox
+                    android:id="@+id/repeatable"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Repeatable" />
+
+                <!-- Time for Task -->
+                <TextView
+                    android:id="@+id/time_for_task_label"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Time for Task" />
+
+                <TimePicker
+                    android:id="@+id/time_for_task"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:timePickerMode="spinner" />
+
+                <!-- Type of Task -->
+                <Spinner
+                    android:id="@+id/type_of_task"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:entries="@array/task_type" />
+
+                <!-- Completed -->
+                <CheckBox
+                    android:id="@+id/completed"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Completed" />
+
+                <!-- XP -->
+                <EditText
+                    android:id="@+id/xp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="XP"
+                    android:inputType="number" />
+
+                <!-- Time Started/Finished -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/time_started_label"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Start Time" />
+
+                    <TimePicker
+                        android:id="@+id/time_started"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:timePickerMode="spinner" />
+
+                    <TextView
+                        android:id="@+id/time_finished_label"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="End Time" />
+
+                    <TimePicker
+                        android:id="@+id/time_finished"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:timePickerMode="spinner" />
+                </LinearLayout>
+
+                <!-- Amount Completed -->
+                <EditText
+                    android:id="@+id/amount_completed"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Amount Completed"
+                    android:inputType="number" />
+
+                <!-- Image -->
+                <Button
+                    android:id="@+id/upload_image"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Upload Image" />
+
+                <!-- Area -->
+                <EditText
+                    android:id="@+id/area"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Area" />
+
+                <!-- Create Task Button -->
+                <Button
+                    android:id="@+id/create_task_button"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Create Task" />
+            </LinearLayout>
+        </ScrollView>
+
+        <!-- Right Side: Task List -->
+        <ScrollView
+            android:id="@+id/task_list"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:padding="8dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <!-- Task 1 -->
+                <LinearLayout
+                    android:id="@+id/task_1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/task_card_bg"
+                    android:orientation="vertical"
+                    android:padding="8dp">
+
+                    <TextView
+                        android:id="@+id/task_name_1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Task 1 Name"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/task_description_1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="end"
+                        android:maxLines="2"
+                        android:text="Task 1 Description" />
+
+                    <TextView
+                        android:id="@+id/task_xp_1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="XP: 10" />
+
+                    <CheckBox
+                        android:id="@+id/task_completed_1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Completed" />
+
+                    <Button
+                        android:id="@+id/task_edit_1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Edit" />
+
+                    <Button
+                        android:id="@+id/task_delete_1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Delete" />
+
+                    <Button
+                        android:id="@+id/button"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="open" />
+                </LinearLayout>
+
+                <!-- More tasks can be added similarly -->
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+
+    <!-- Bottom Section: Spinning Wheel and Notifications -->
+    <LinearLayout
+        android:id="@+id/bottom_section"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal"
+        android:paddingTop="16dp">
+
+        <!-- Spinning Wheel Button -->
+        <Button
+            android:id="@+id/spinning_wheel_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Spin the Wheel" />
+
+        <!-- Notifications Bar -->
+        <!-- Add Notifications Bar Content Here -->
+
+    </LinearLayout>
+</RelativeLayout>
